@@ -505,21 +505,19 @@ transition: background-color 250ms var(--cubic);
 
 }
 
-/* .form.form-checkbox-input {
+.form-checkbox-input {
     display: inline-flex;
     align-items: center;
     position: absolute;
-   
- 
-} */
+}
 
 .form-checkbox-input:checked+.form-checkbox-label:before,
 .form-checkbox-input:focus+.form-checkbox-label:before
 
     {
-    background-image: url(../images/icons/icon-check.svg);
+    background-image: url(../images/icons/icon-check-white.svg);
     border-color: transparent;
-    /* background-color: var(--color-link); */
+    background-color: var(--color-link);
 
     background-origin: border-box;
     background-size: contain;
