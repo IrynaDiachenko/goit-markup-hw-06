@@ -16,6 +16,18 @@
 }
 
 
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+
 
 
 body {
@@ -333,14 +345,17 @@ transition: opasity 250ms var(--cubic);
     fill: var(--logo-color);
 }
 
-
+.close:hover>.btn-close,
+.close:hover:focus>.btn-close {
+    fill: var(--color-link);
+}
 
 /* MODAL FORM */
 
 .modal-title{
 font-size: 20px;
 font-weight: 700;
-line-height: 1.12px;
+
 margin-bottom: 20px;
 text-align: center;
 letter-spacing: 0.03em;
@@ -357,13 +372,16 @@ letter-spacing: 0.03em;
 }
 
 .form-title {
-    /* font-size: 12px;
+    font-size: 12px;
     line-height: 1.16;
-    letter-spacing: 0.01em; */
+    letter-spacing: 0.01em;
+    margin-top: 12px;
+
+
     margin-bottom: 4px;
-    /* margin-top: 12px; */
+    
     display: block;
-     color: var(--color-tipe);
+    color: var(--color-tipe);
 }
 
 .form-input {
@@ -371,23 +389,24 @@ letter-spacing: 0.03em;
     height: 40px;
     border-radius: 4px;
     border: 1px solid rgba(33, 33, 33, 0.2);
-   box-sizing: border-box;
+    box-sizing: border-box;
     padding-left: 42px;
-    /* padding: 11px 12px; */
+    padding: 11px 12px;
     color: var(--text-color);
     font-size: 14px;
 
     transition: border-color 250ms var(--cubic),
     color 250ms var(--cubic);
-    outline: 0;
+    /* outline: 0; */
 }
 
+.form-input:hover,
 .form-input:focus {
     border-color: var(--color-link);
     /* outline: none;  или outline-offset: 0; */
 }
 
-.form-input:focus .form-icon {
+.form-input:focus + .form-icon {
     fill: var(--color-link);
 }
 
@@ -402,6 +421,9 @@ letter-spacing: 0.03em;
     color: var(--text-color);
 }
 
+.form-field-textarea  {
+   margin-bottom: 20px;
+}
 .form-input-wrapper {
 position: relative;
  /* margin-top: 6px; */
@@ -412,37 +434,92 @@ position: absolute;
 /* display: block; */
 width: 18px;
 height: 18px;
-
+left: 12px;
 top: 50%;
 transform: translateY(-50%);
-left: 12px;
-color: currentColor;
+
+display: inline-block;
+
+transition: background-color 250ms var(--cubic);
 }
 
-/* .form-conteiner input{
-margin: 0;
-padding: 15px 14px;
-border-radius: 4px;
-}
-
-.form-conteiner label {
-    margin-bottom: 5px;
-
-}
-
-.form-conteiner input::placeholder{
-    color: #757575;
-    padding: 16px 12px;
-} */
-
-
-/* .comment {
-    padding: 12px 16px ;
-} */
-
-textarea {
+.form-comment {
+    width: 100%;
+    height: 120px;
+    padding: 12px 16px;
     resize: none;
+
+    /* margin-top: 6px; */
+    border-radius: 4px;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    
+    
+    transition: border-color 250ms var(--cubic);
+    color: var(--main-color);
+    /* text-transform: uppercase; */
 }
+
+.form-comment::placeholder {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.01em;
+
+  color: rgba(117, 117, 117, 0.5);
+    /* text-transform: uppercase; */
+}
+
+.form-comment:focus,
+.form-input:focus, 
+.form__input:focus+.form-icon {
+    fill: var(--color-link;
+    border-color: var(--color-link);
+    outline: none;
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.form-checkbox-label::before {
+    display: block;
+    content: "";
+    width: 16px;
+    height: 15px;
+    border: 2px solid var(--color-tipe);
+    border-radius: 2px;
+    cursor: pointer;
+    margin-right: 7px;
+    
+   
+
+}
+
+.form-checkbox-input:checked+.form-checkbox-label {
+    background-image: url(../images/icons/icon-check.svg);
+
+}
+
+.form-checkbox-input:focus+.form-checkbox-label {
+
+}
+
+
+
+.form-checkbox-link {
+    color: var(--color-link);
+    text-decoration: underline;
+}
+
+.modal-form-btn{
+     width: 200px;
+     align-self: center;
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+
 
 
 
@@ -871,9 +948,13 @@ margin-top: 9px;
 
         border-radius: 4px;
 
-       color: rgba(255, 255, 255, 0.6);
+       color: var(--main-color);
         font-size: 16px;
         line-height: 1.25;
+    }
+
+    .subscribe-email::placeholder {
+        color: rgba(255, 255, 255, 0.6);
     }
 
     .submit-btn {
